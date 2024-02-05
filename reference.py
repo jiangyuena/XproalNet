@@ -95,12 +95,12 @@ model=R2GenModel(args ,tokenizer).to('cuda' if torch.cuda.is_available() else 'c
 if current:
     state_dict = torch.load('checkpoint/current_checkpoint.pth')
     model_state_dict = state_dict['state_dict']
-    model.load_state_dict(model_state_dict).to('cuda' if torch.cuda.is_available() else 'cpu')
+    model.load_state_dict(model_state_dict)#.to('cuda' if torch.cuda.is_available() else 'cpu')
 
 else:
     state_dict = torch.load('checkpoint/model_best.pth')
     model_state_dict = state_dict['state_dict']
-    model.load_state_dict(model_state_dict).to('cuda' if torch.cuda.is_available() else 'cpu')
+    model.load_state_dict(model_state_dict)#.to('cuda' if torch.cuda.is_available() else 'cpu')
 
 model.eval()
 with torch.no_grad():
